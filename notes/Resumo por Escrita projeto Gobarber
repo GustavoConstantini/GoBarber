@@ -1,0 +1,103 @@
+#Aula 1 GoBarber
+Estrutura do projeto
+yarn init -y
+yarn add express
+criar pasta src
+	app.js
+	server.js
+	routes.js
+
+#Aula 2 GoBarber
+nodemon & sucrase
+yarn add sucrase nodemon -D
+trocar require por import e export e module.exports por import default
+config nodemon mais sucrase
+"scripts": {
+    "start": "nodemon --exec sucrase-node ./src/server.js"
+  },
+
+#Aula 3 GoBarber
+conceitos do Docker
+cria ambientes isolados
+containers expõe portas para comunicação
+PostgresSQL porta :5432 MongoDB porta 27017
+imagem
+containers
+PostgresSQL 3 bancos de dados com a mesma imagem
+Docker Registry (Docker Hub)
+Docker File Receita de uma imagem
+
+#aula 4 GoBarber
+config Docker
+search docker ce
+instalar
+docker - v mostra a version
+docker help ajuda
+criar DB comando:
+	docker run --name nome -e POSTGRES_PASSWORD=Senha -p port:port -d postgres: se for uma version especifica informar depois do : se nao ira instalar a ultima version
+docker ps mostra os containers em execucao na maquina no momento
+interface postbird
+docker ps -a mostra todos os containers
+docker logs nome do containers
+mais para frente aprender isolar containers
+
+#Aula 5 GoBarber
+sequelize & MVC
+serve para BD SQL
+sem SQL apenas js
+
+#Aula 6 ESlint, Prettier e EditorConfig
+yarn add eslint -D
+yarn eslint --init
+excluir packge-lock.json
+rodar yarn
+cria .eslintrc.json
+precisa da extensao eslint em seu editor de codigo
+configurar esse arquivo
+nas configuracoes do editor
+"eslint.autoFixOnSave": true,
+no .eslintrc.js
+module.exports = {
+  env: {
+    es6: true,
+    node: true
+  },
+  extends: [
+    'airbnb-base',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  rules: {
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "camelcase": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
+
+  },
+};
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+extensao prettier no editor de codigo no vscode v 1.8.1 versoes atuais nao suporta eslint
+"prettier.eslintIntegration": true,
+nas configuracoes
+arquivo .prettierrc:
+{
+  "singleQuote": true,
+  "trailingComma": "es5"
+}
+corrigir todos os arquivos na pasta
+yarn --fix src --ext .js
+extensao EditorConfig:
+root = true
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
