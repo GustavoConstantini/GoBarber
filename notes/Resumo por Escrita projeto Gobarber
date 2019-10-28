@@ -46,7 +46,8 @@ sequelize & MVC
 serve para BD SQL
 sem SQL apenas js
 
-#Aula 6 ESlint, Prettier e EditorConfig
+#Aula 6 GoBarber
+ESlint, Prettier e EditorConfig
 yarn add eslint -D
 yarn eslint --init
 excluir packge-lock.json
@@ -101,3 +102,48 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+#Aula 7 GoBarber
+configurar sequelize
+na pasta src criar pasta config ficar a maioria das configuracoes
+na pasta config database.js vai ficar as credenciais para acessar a base de dados
+na pasta src criar pasta database na pasta database criar past migrations
+na pasta src criar pasta app dentro da pasta vai ficar a maioria do codigo onde envolve a regra de negocio ou logica criar pasta models e controllers
+tudo isso para o sequelize funcionar
+yarn add sequelize
+cli vai ajudar ele e uma interface de linha de comando para criar migrations criar models e afins
+yarn add sequelize-cli -D
+criar arquivo chamado .sequelizerc
+vai exportar os caminhos de arquivos e pastas que foi criado nessa aula
+para padronizar os caminhos em todos os sistemas operacionais
+const { resolve } = require('path');
+caminhos
+module.exports = {
+  config: resolve(__dirname, 'src', 'config', 'database.js'),
+  'models-path': resolve(__dirname, 'src', 'app', 'models'),
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
+};
+
+para utiliazar o sequelize com postgres
+yarn add pg pg-hstore
+em config no arquivo database.js
+module.exports = {
+  dialect: 'postgras',
+  host: 'localhost',
+  username: 'postgres',
+  password: 'docker',
+  database: 'gobarber',
+  define: {
+    timestamps: true,
+    underscored: true,
+    underscoredAll: true,
+  },
+};
+
+#Aula 7 GoBarber
+migrations
+criar a migration com sequelize-cli
+yarn sequelize micration:create --name -create-users
+cria tabela de usuarios
+editar a migration
+rodar migration yarn sequelize db:migrate
