@@ -92,7 +92,7 @@ arquivo .prettierrc:
   "trailingComma": "es5"
 }
 corrigir todos os arquivos na pasta
-yarn --fix src --ext .js
+yarn eslint --fix src --ext .js
 extensao EditorConfig:
 root = true
 [*]
@@ -140,10 +140,46 @@ module.exports = {
   },
 };
 
-#Aula 7 GoBarber
+#Aula 8 GoBarber
 migrations
 criar a migration com sequelize-cli
-yarn sequelize micration:create --name -create-users
+yarn sequelize micration:create --name users
 cria tabela de usuarios
 editar a migration
 rodar migration yarn sequelize db:migrate
+yarn sequelize db:migrate:undo desfaz a ultima migrate
+
+
+#Aula  9 GoBarber
+Model de usuarios
+na pasta app/models criar arquivo User.js
+definir static init(sequelize)
+
+#Aula 10 GoBarber
+criar loader de models
+criar conexao com o DB
+e vai carregar todos os models
+na pasta database criar arquivo index.js
+Sequele responsavel pela conexao com o db
+
+#Aula 11 GoBarber
+criando arquivo UserController.js na pasta src / app / constrolers
+
+#Aula 12 GoBarber
+gerar hash de senha de usuario
+yarn add bcryptjs
+add password tipo sequlize virtual
+usar o bcrypt para criptografar a senha
+
+#Aula 13 GoBarber
+coneceitos de JWT
+
+#Aula 13 GoBarber
+criar arquivo SessionController.js em src/app/constrollers
+yarn add jsomwebtoken
+criar em src/config auth.js
+
+#Aula 14 GoBarber
+bloquear rotas se o usuario nao estiver logado
+criar pasta middlewares em src/app
+
